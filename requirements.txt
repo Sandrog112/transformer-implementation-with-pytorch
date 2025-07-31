@@ -1,0 +1,6 @@
+# Dependencies for the project
+torch==2.7.1
+torchaudio==2.7.1
+torchvision==0.22.1
+numpy==2.3.2
+matplotlib==3.10.3
