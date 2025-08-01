@@ -1,3 +1,5 @@
+import sys
+sys.path.append("c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation") 
 from torch import nn
 import torch   
 from model_components.layers.multi_head_attention import MultiHeadAttention

@@ -1,3 +1,5 @@
+import sys
+sys.path.append("c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation")
 import torch
 from torch import nn
 from model_components.blocks.encoder import EncoderLayer
