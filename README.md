@@ -5,7 +5,7 @@ This repository provides a from-scratch implementation of the Transformer model,
 
 ## Transformer Architecture
 
-![alt text](image.png)
+<img width="556" height="731" alt="image" src="https://github.com/user-attachments/assets/0d434c8d-d2ab-494d-8895-cf504a5a4417" />
 
 ## Repository Structure
 
