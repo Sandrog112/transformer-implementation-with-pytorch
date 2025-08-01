@@ -50,7 +50,8 @@ class MultiHeadAttention(nn.Module):
         return output
         
     def split_heads(self, x: Tensor) -> Tensor:
-        """Split tensor into multiple attention heads.
+        """
+        Split tensor into multiple attention heads.
 
         Shape:
             - Input: (batch_size, seq_len, d_model)

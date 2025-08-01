@@ -9,7 +9,8 @@ class TokenEmbedding(nn.Embedding):
     """
 
     def __init__(self, vocab_size, d_model):
-        """Initializes the TokenEmbedding layer.
+        """
+        Initializes the TokenEmbedding layer.
 
         This layer creates embeddings for input tokens by inheriting from nn.Embedding.
         It maps token indices to dense vectors of fixed size.
