@@ -3,6 +3,17 @@ from torch import nn
 
 
 class RoPE(nn.Module):
+    """
+    Rotary Position Embedding (RoPE) implementation.
+
+    Applies rotary positional encoding to input tensors by rotating
+    query and key vectors in attention mechanisms.
+
+    Args:
+        d (int): Dimension of the embedding (should be even)
+        base (int): Base for frequency computation (default: 10000)
+    """
+
     def __init__(self, d: int, base: int = 10000):
         super().__init__()
         self.base = base
@@ -11,6 +22,12 @@ class RoPE(nn.Module):
         self.sin_cached = None
 
     def build_cache(self, x: torch.Tensor):
+        """
+        Build and cache cos/sin rotation matrices for the sequence length.
+
+        Args:
+            x (torch.Tensor): Input tensor with shape [seq_len, batch, heads, d_model]
+        """
         if self.cos_cached is not None and x.shape[0] <= self.cos_cached.shape[0]:
             return
 
@@ -30,11 +47,29 @@ class RoPE(nn.Module):
         self.sin_cached = idx_theta2.sin()[:, None, None, :]
 
     def neg_half(self, x: torch.Tensor):
+        """
+        Apply rotation by swapping and negating half of the dimensions.
+
+        Args:
+            x (torch.Tensor): Input tensor
+
+        Returns:
+            torch.Tensor: Rotated tensor for complex multiplication
+        """
         d_2 = self.d // 2
 
         return torch.cat([-x[:, :, :, d_2:], x[:, :, :, :d_2]], dim=-1)
 
     def forward(self, x: torch.Tensor):
+        """
+        Apply RoPE to input tensor.
+
+        Args:
+            x (torch.Tensor): Input tensor [seq_len, batch, heads, d_model]
+
+        Returns:
+            torch.Tensor: Tensor with rotary positional encoding applied
+        """
         self.build_cache(x)
 
         seq_len = x.shape[0]
