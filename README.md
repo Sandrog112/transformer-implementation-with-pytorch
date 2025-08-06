@@ -1,24 +1,37 @@
-# Paper Implementations
+# 📚 Paper Implementations
 
-This repository provides a from-scratch implementation of the Transformer model (as described in the `"Attention is All You Need"` paper) and Vision Transformer model (known from a paper called: `AN IMAGE IS WORTH 16X16 WORDS:TRANSFORMERS FOR IMAGE RECOGNITION AT SCALE`), using `PyTorch`. It serves as a learning resource for understanding the complexities of the Transformer architecture in a variety of domains, including natural language processing and computer vision, by providing clean, well-documented, and easy-to-follow code implementations.
+This repository provides `from-scratch implementations` of core models and architectures introduced in seminal machine learning papers, using `PyTorch`. It serves as both an educational and reference resource for understanding foundational and cutting-edge approaches across a `variety of domains`.
+
+Below is a list of the `research papers` currently implemented in this repository, with proper attribution.
+
+| Paper Title                                                                                                    | Domain          | Citation                 |
+| -------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------ |
+| [Attention is All You Need](https://arxiv.org/abs/1706.03762)                                                  | NLP             | Vaswani et al., 2017     |
+| [An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale](https://arxiv.org/abs/2010.11929) | Computer Vision | Dosovitskiy et al., 2020 |
+| [RoFormer: Enhanced Transformer with Rotary Position Embedding](https://arxiv.org/abs/2104.09864)              | NLP             | Su et al., 2021          |
 
 
-## Transformer Architecture
+## Transformer Architecture (Attention is All You Need)
 
 <img width="556" height="731" alt="image" src="https://github.com/user-attachments/assets/0d434c8d-d2ab-494d-8895-cf504a5a4417" />
 
-## Vision Transformer Architecture
+## Vision Transformer Architecture (An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale)
 
 <img width="908" height="460" alt="image" src="https://github.com/user-attachments/assets/fb251aae-a183-4961-9133-3d0ee60b15a6" />
 
+## RoPE (RoFormer: Enhanced Transformer with Rotary Position Embedding)
 
-## Repository Files Structure 
+<img width="1026" height="583" alt="image" src="https://github.com/user-attachments/assets/87ffe32f-e1d4-4fa4-834a-2d260b1d0939" />
 
- In this repo Transformer is constructed in a layered approach, starting from the fundamental building blocks and assembling them into the complete architecture.
+
+
+## 🗂️ Repository Files Structure 
+
+The implementations in this repository are built using a layered and modular approach, starting from fundamental components and gradually assembling them into `complete, functional architectures`. This design promotes reusability, understanding, and easy experimentation with different model variants.
 
 ```bash
 
-📦 transformer-implementation-with-pytorch
+transformer-implementation-with-pytorch
 │
 ├── transformer/                      # Contains Transformer model and components
 │   ├── __init__.py                  # Makes 'transformer' a Python package
@@ -46,7 +59,10 @@ This repository provides a from-scratch implementation of the Transformer model 
 │   ├── __init__.py                  # Makes 'vision_transformer' a Python package
 │   ├── implementation.py            # Vision Transformer code
 │   └── train_mnist.ipynb            # Training notebook for MNIST
-│
+├── roformer/                         # RoFormer implementation
+│   ├── __init__.py                  
+│   ├── rope.py                       # Rotary Positional Encoding
+│   └── transformer_with_rope.py      # Transformer model with RoPE
 ├── model_test.py                    # Script for testing the model
 ├── requirements.txt                 # Python dependencies for the project
 ├── README.md                       # Project overview and documentation
