@@ -1,7 +1,10 @@
 import sys
-sys.path.append("c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation") 
+
+sys.path.append(
+    "c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation"
+)
 from torch import nn
-import torch   
+import torch
 from model_components.layers.multi_head_attention import MultiHeadAttention
 from model_components.layers.feed_forward_nn import PositionWiseFeedForward
 
@@ -9,8 +12,8 @@ from model_components.layers.feed_forward_nn import PositionWiseFeedForward
 class EncoderLayer(nn.Module):
     """
     Implements encoder block in transformer architecture.
-    
-    Consists of multi-head attention, position-wise feed-forward network,   
+
+    Consists of multi-head attention, position-wise feed-forward network,
     and layer normalization.
 
     Args:
@@ -18,16 +21,16 @@ class EncoderLayer(nn.Module):
         num_heads (int): Number of attention heads
         d_ff (int): Feed-forward hidden layer dimension
         dropout (float): Dropout probability
-        
+
     Shape:
         - Input: (batch_size, seq_len, d_model)
         - Output: (batch_size, seq_len, d_model)
     """
-    
+
     def __init__(self, d_model: int, num_heads: int, d_ff: int, dropout: float):
         """
         Initializes encoder layer components.
-        
+
         """
         super(EncoderLayer, self).__init__()
         self.self_attn = MultiHeadAttention(d_model, num_heads)
@@ -35,15 +38,15 @@ class EncoderLayer(nn.Module):
         self.norm1 = nn.LayerNorm(d_model)
         self.norm2 = nn.LayerNorm(d_model)
         self.dropout = nn.Dropout(dropout)
-        
+
     def forward(self, x: torch.Tensor, mask: torch.Tensor = None) -> torch.Tensor:
         """
         Forward pass through encoder layer.
-        
+
         Args:
             x (Tensor): Input sequence
             mask (Tensor, optional): Attention mask
-            
+
         Returns:
             Tensor: Processed sequence through self-attention and feed-forward layers
         """
