@@ -5,6 +5,9 @@ __pycache__/
 # IDE configurations
 .vscode/
 
+# Outputs
+data/
+results/
 
 # File Extensions to ignore
 *.csv
