@@ -1,15 +1,18 @@
 import sys
-sys.path.append("c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation") 
+
+sys.path.append(
+    "c:\\Users\\AleksandreKurtishvil\\Desktop\\mastering-nlp-through-paper-implementation"
+)
 from torch import nn
-import torch    
+import torch
 from model_components.layers.multi_head_attention import MultiHeadAttention
-from model_components.layers.feed_forward_nn import PositionWiseFeedForward 
+from model_components.layers.feed_forward_nn import PositionWiseFeedForward
 
 
 class DecoderLayer(nn.Module):
     """
     Implements a single decoder layer in transformer architecture.
-    
+
     Consists of self-attention, cross-attention with encoder output,
     and feed-forward network with residual connections and layer normalization.
 
@@ -18,12 +21,13 @@ class DecoderLayer(nn.Module):
         num_heads (int): Number of attention heads
         d_ff (int): Feed-forward hidden layer dimension
         dropout (float): Dropout probability
-        
+
     Shape:
         - Input x: (batch_size, tgt_seq_len, d_model)
         - Input enc_output: (batch_size, src_seq_len, d_model)
         - Output: (batch_size, tgt_seq_len, d_model)
     """
+
     def __init__(self, d_model: int, num_heads: int, d_ff: int, dropout: float):
         """
         Initialize decoder layer components.
@@ -37,18 +41,23 @@ class DecoderLayer(nn.Module):
         self.norm2 = nn.LayerNorm(d_model)
         self.norm3 = nn.LayerNorm(d_model)
         self.dropout = nn.Dropout(dropout)
-        
-    def forward(self, x: torch.Tensor, enc_output: torch.Tensor, 
-                src_mask: torch.Tensor = None, tgt_mask: torch.Tensor = None) -> torch.Tensor:
+
+    def forward(
+        self,
+        x: torch.Tensor,
+        enc_output: torch.Tensor,
+        src_mask: torch.Tensor = None,
+        tgt_mask: torch.Tensor = None,
+    ) -> torch.Tensor:
         """
         Forward pass through decoder layer.
-        
+
         Args:
             x (Tensor): Input sequence
             enc_output (Tensor): Output from encoder
             src_mask (Tensor, optional): Mask for encoder attention
             tgt_mask (Tensor, optional): Mask for decoder self-attention
-            
+
         Returns:
             Tensor: Processed sequence through self-attention, cross-attention, and feed-forward layers
         """
